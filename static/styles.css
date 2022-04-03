@@ -9,8 +9,12 @@ body {
   margin: 0 auto;
   background: white;
 }
-
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
+  font-family: serif;
+  color: #f07167;
+  margin: 5rem 0;
+}
+h3, h4, h5, h6 {
   font-family: serif;
   color: #377ba8;
   margin: 1rem 0;
@@ -132,3 +136,12 @@ input[type=submit] {
   align-self: start;
   min-width: 10em;
 }
+.table-content {
+        width: 450px;
+        margin: 50px auto;
+        text-align: center;
+    }
+
+    td {
+        width: 100px;
+    }
