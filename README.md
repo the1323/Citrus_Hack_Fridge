@@ -11,6 +11,9 @@
 ## Reference:
 
 https://github.com/t-edson/bootstable
+
 https://getbootstrap.com/docs/5.1/getting-started/introduction/
+
 https://www.w3schools.com/js/
+
 https://www.crummy.com/software/BeautifulSoup/bs4/doc/
