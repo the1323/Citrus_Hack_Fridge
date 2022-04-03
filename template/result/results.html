@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% set active_page = "results" %}
+{% block heading %}
+
+{% endblock %}
+
+{% block body %}
+  <h2>{% block title %}Result Recipes{% endblock %}</h2>
+
+
+
+{#  <div style="white-space: pre">#}
+{#    {% if g.user %}#}
+{#       <a class="action" href="{{ url_for('blog.create') }}">New Student</a>#}
+{#    {% endif %}#}
+{#  </div>#}
+
+  <table style="width:40%">
+    <tr>
+      <th>name</th>
+      <th>servings</th>
+        <th>ingredients</th>
+      <th>instructions</th>
+      <th>link</th>
+      <th>image</th>
+      <th></th>
+    </tr>
+  {% for post in posts %}
+    <tr>
+      <td>{{ post['name'] }}</td>
+      <td>{{ post['servings'] }}</td>
+        <td>{{ post['ingredients'] }}</td>
+      <td>{{ post['instructions'] }}</td>
+        <td>{{ post['link'] }}</td>
+      <td>{{ post['image'] }}</td>
+{#      <td>{{ post['age'] }}</td>#}
+{#      <td>{{ post['major'] }}</td>#}
+{#      <td><a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a></td>#}
+    </tr>
+    
+
+  {% endfor %}
+{% endblock %}
