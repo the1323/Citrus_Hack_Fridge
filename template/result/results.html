@@ -1,43 +1,83 @@
-{% extends 'base.html' %}
+{#{% extends 'base.html' %}#}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 {% set active_page = "results" %}
+{% include 'nav.html' %}
 {% block heading %}
 
 {% endblock %}
 
 {% block body %}
-  <h2>{% block title %}Result Recipes{% endblock %}</h2>
 
 
 
-{#  <div style="white-space: pre">#}
-{#    {% if g.user %}#}
-{#       <a class="action" href="{{ url_for('blog.create') }}">New Student</a>#}
-{#    {% endif %}#}
-{#  </div>#}
 
-  <table style="width:40%">
-    <tr>
-      <th>name</th>
-      <th>servings</th>
-        <th>ingredients</th>
-      <th>instructions</th>
-      <th>link</th>
-      <th>image</th>
-      <th></th>
-    </tr>
-  {% for post in posts %}
-    <tr>
-      <td>{{ post['name'] }}</td>
-      <td>{{ post['servings'] }}</td>
-        <td>{{ post['ingredients'] }}</td>
-      <td>{{ post['instructions'] }}</td>
-        <td>{{ post['link'] }}</td>
-      <td>{{ post['image'] }}</td>
-{#      <td>{{ post['age'] }}</td>#}
-{#      <td>{{ post['major'] }}</td>#}
-{#      <td><a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a></td>#}
-    </tr>
-    
 
-  {% endfor %}
+
+{% for i in range (5)%}
+<div class="card-deck">
+  <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{posts0[i]['image']}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{posts0[i]['name']}}</h5>
+
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body">
+    <a href={{posts0[i]['link']}} class="card-link">Recipe link</a>
+  </div>
+</div>
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{posts1[i]['image']}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{posts1[i]['name']}}</h5>
+
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body">
+    <a href={{posts1[i]['link']}} class="card-link">Recipe link</a>
+  </div>
+</div>
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{posts2[i]['image']}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{posts2[i]['name']}}</h5>
+
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body">
+    <a href={{posts2[i]['link']}} class="card-link">Recipe link</a>
+  </div>
+</div>
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{posts3[i]['image']}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{posts3[i]['name']}}</h5>
+
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-body">
+    <a href={{posts3[i]['link']}} class="card-link">Recipe link</a>
+  </div>
+</div>
+</div>
+
+
+    {% endfor %}
+
 {% endblock %}
