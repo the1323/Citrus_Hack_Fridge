@@ -13,6 +13,7 @@ class Recipe:
         self.instructions = instructions
         self.link = link
         self.image = image
+        self.score = 0
 
 
 #
@@ -28,42 +29,67 @@ def inv():
 
 @app.route('/results', methods=["GET", "POST"])
 def results():  # put application's code here
-    inventory = ['bourbon', 'Cointreau', 'lime juice', 'sweetener', 'ice', 'lime wedge']
+    with open('inventory.json', encoding='utf-8') as inv:
+        inventory =json.load(inv)
+
+
     posts0 = []
     posts1 = []
     posts2 = []
     posts3 = []
+    allRecipe = []
     with open('gimmesomeovenRecipes.json', encoding='utf-8') as rawdata:
         data = json.load(rawdata)
     count = 0
+
     for d in data:
         # print(d)
 
-        recipe = Recipe(d['name'], d['servings'], d['ingredients'], d['instructions'], d['link'], d['image'])
-        # cnt = 0
-        # for i in inventory:
-        #     print(i)
-        #     print(recipe.ingredients)
-        #     for r in recipe.ingredients:
-        #         if i in r:
-        #             cnt += 1
-        #             break
-        # score = cnt / len(recipe.ingredients)
-        # print(cnt)
-        # print(len(recipe.ingredients))
-        # print(score)
-        # break
+        recipeD = Recipe(d['name'], d['servings'], d['ingredients'], d['instructions'], d['link'], d['image'])
+
+        cnt = 0
+        #print(inventory)
+        for a in inventory:
+            i = a['name']
+            #print(i)
+            #print(recipeD.ingredients)
+            for r in recipeD.ingredients:
+                if i in r:
+                    cnt += 1
+                    break
+
+        recipeD.score = int(cnt / len(recipeD.ingredients)*100)
+        if recipeD.score > 100:
+            recipeD.score = 100
+        #print(cnt)
+        #print(len(recipe.ingredients))
+        #print(score)
+        print(recipeD.score)
+        #break
+
+
+
+
+
+        allRecipe.append(recipeD)
+
+    allRecipe = sorted(allRecipe, key=lambda x: x.score, reverse=True)
+    for recipe in allRecipe:
+
+
+
+
         if count == 0:
-            posts0.append(d)
+            posts0.append(recipe)
             count +=1
         elif count == 1:
-            posts1.append(d)
+            posts1.append(recipe)
             count +=1
         elif count == 2:
-            posts2.append(d)
+            posts2.append(recipe)
             count +=1
         elif count == 3:
-            posts3.append(d)
+            posts3.append(recipe)
             count =0
     print(len(posts0))
 
