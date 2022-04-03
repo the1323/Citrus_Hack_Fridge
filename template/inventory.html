@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Inventory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+{% include 'nav.html' %}
+<div class="container">
+  <h1>Inventory</h1>
+
+  <form>
+
+    <div class="form-group">
+      <label>Food Name:</label>
+      <input type="text" name="name" class="form-control" required="">
+    </div>
+
+    <div class="form-group">
+      <label>Food Quantity:</label>
+      <input type="text" name="qty" class="form-control" required="">
+    </div>
+
+{#      <div class="form-group">#}
+{#      <label>Expiration Date:</label>#}
+{#      <input type="text" name="exp" class="form-control" required="">#}
+{#    </div>#}
+
+    <button type="submit" class="btn btn-success save-btn">Save</button>
+
+  </form>
+  <br/>
+  <table class="table table-bordered data-table">
+    <thead>
+      <th>Food Name</th>
+      <th>Food Quantity</th>
+{#      <th>Expiration Date</th>#}
+      <th width="200px">Action</th>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+</div>
+
+<script type="text/javascript">
+
+    $("form").submit(function(e){
+        e.preventDefault();
+        var name = $("input[name='name']").val();
+        var qty = $("input[name='qty']").val();
+        {#var exp = $("input[name='exp']").val();#}
+
+$(".data-table tbody").append("<tr data-name='"+name+"' data-qty='"+qty+"'><td>"+name+"</td><td>"+qty+"</td><td><button class='btn btn-info btn-xs btn-edit'>Edit</button><button class='btn btn-danger btn-xs btn-delete'>Delete</button></td></tr>");
+
+        $("input[name='name']").val('');
+        $("input[name='qty']").val('');
+        {#$("input[name='exp']").val('');#}
+    });
+
+    $("body").on("click", ".btn-delete", function(){
+        $(this).parents("tr").remove();
+    });
+
+    $("body").on("click", ".btn-edit", function(){
+        var name = $(this).parents("tr").attr('data-name');
+        var qty = $(this).parents("tr").attr('data-qty');
+        {#var exp = $(this).parents("tr").attr('data-exp');#}
+
+        $(this).parents("tr").find("td:eq(0)").html('<input name="edit_name" value="'+name+'">');
+        $(this).parents("tr").find("td:eq(1)").html('<input name="edit_qty" value="'+qty+'">');
+        {#$(this).parents("tr").find("td:eq(2)").html('<input name="edit_exp" value="'+exp+'">');#}
+
+        $(this).parents("tr").find("td:eq(2)").prepend("<button class='btn btn-info btn-xs btn-update'>Update</button><button class='btn btn-warning btn-xs btn-cancel'>Cancel</button>")
+        $(this).hide();
+    });
+
+    $("body").on("click", ".btn-cancel", function(){
+        var name = $(this).parents("tr").attr('data-name');
+        var qty = $(this).parents("tr").attr('data-qty');
+        {#var exp = $(this).parents("tr").attr('data-exp');#}
+
+        $(this).parents("tr").find("td:eq(0)").text(name);
+        $(this).parents("tr").find("td:eq(1)").text(qty);
+        {#$(this).parents("tr").find("td:eq(2)").text(exp);#}
+
+        $(this).parents("tr").find(".btn-edit").show();
+        $(this).parents("tr").find(".btn-update").remove();
+        $(this).parents("tr").find(".btn-cancel").remove();
+    });
+
+    $("body").on("click", ".btn-update", function(){
+        var name = $(this).parents("tr").find("input[name='edit_name']").val();
+        var qty = $(this).parents("tr").find("input[name='edit_qty']").val();
+        {#var exp = $(this).parents("tr").find("input[name='edit_exp']").val();#}
+
+        $(this).parents("tr").find("td:eq(0)").text(name);
+        $(this).parents("tr").find("td:eq(1)").text(qty);
+        {#$(this).parents("tr").find("td:eq(2)").text(exp);#}
+
+        $(this).parents("tr").attr('data-name', name);
+        $(this).parents("tr").attr('data-qty', qty);
+        {#$(this).parents("tr").attr('data-exp', exp);#}
+
+        $(this).parents("tr").find(".btn-edit").show();
+        $(this).parents("tr").find(".btn-cancel").remove();
+        $(this).parents("tr").find(".btn-update").remove();
+    });
+
+</script>
+
+</body>
+</html>
