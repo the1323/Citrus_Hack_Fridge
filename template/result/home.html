@@ -1,9 +1,17 @@
-{% extends 'base.html' %}
+{#{% extends 'base.html' %}#}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 {% set active_page = "home" %}
+{% include 'nav.html' %}
 {% block heading %}
 
-{% endblock %}
 
-{% block body %}
-  <h2>{% block title %}HOME{% endblock %}</h2>
+  <h2>Inside Fridge</h2>
+    <h3>We manage your fridge, and your meals.</h3>
+
+        <div
+  style="
+    background-image: url('https://images.samsung.com/is/image/samsung/assets/us/home-appliances/refrigerators/pcd/07152021/3b-Samsung-Family-Hub-REF-PCD-Desktop-Asset.jpg?$720_520_JPG$');
+    height: 600px;
+  "
+></div>
 {% endblock %}
