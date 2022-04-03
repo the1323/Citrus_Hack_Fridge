@@ -1,0 +1,26 @@
+[
+    {
+        "name": "egg",
+        "qty": "12"
+    },
+  {
+        "name": "chicken tinga",
+        "qty": "3"
+    },
+  {
+        "name": "lime wedges",
+        "qty": "4"
+    },
+  {
+        "name": "avocados",
+        "qty": "1"
+    },
+  {
+        "name": "red onions",
+        "qty": "5"
+    },
+  {
+        "name": "cheese",
+        "qty": "1"
+    }
+]
