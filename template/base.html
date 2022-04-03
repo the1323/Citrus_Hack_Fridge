@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>\
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!--custom stylesheet-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+      <!--google font-->
+{#        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">#}
+
+        <title>Novice Chef</title>
+        <!-- NAVBAR -->
+      <header class="container-fluid">
+        <a href="{{ url_for('index') }}">
+          <h1 class="logo">
+            Novice Chef
+          </h1>
+        </a>
+        <form action="">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle">
+          <nav>
+            <ul>
+              <li class="nav-first-link">
+                <!-- add active-nav class to whichever link is clicked  -->
+                <a href="{{ url_for('index') }}" class="{{ 'active-nav' if active_page == 'home' else '' }}">Home</a>
+              </li>
+              <li>
+                <a href="{{ url_for('results') }}" class="{{ 'active-nav' if active_page == 'results' else '' }}">Results</a>
+              </li>
+
+
+            </ul>
+          </nav>
+          <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+          </label>
+        </form>
+      </header>
+
+
+    </head>
+
+</html>
+
+
+{#<title>{% block title %}{% endblock %} - Student</title>#}
+{#<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">#}
+{#<nav>#}
+{#  <h1>Student Records</h1>#}
+{##}
+{#</nav>#}
+{#<section class="content">#}
+{#  <header>#}
+{#    {% block header %}{% endblock %}#}
+{#  </header>#}
+{#  {% for message in get_flashed_messages() %}#}
+{#    <div class="flash">{{ message }}</div>#}
+{#  {% endfor %}#}
+{#  {% block content %}{% endblock %}#}
+{#</section>#}
